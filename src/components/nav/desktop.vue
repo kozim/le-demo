@@ -1,5 +1,5 @@
 <template>
-  <p class="primaryText">Desktop view</p>
+  
 </template>
 
 <script>

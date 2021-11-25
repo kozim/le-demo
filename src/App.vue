@@ -1,16 +1,11 @@
 <template>
   <div id="app">
-    <desktop-nav
-    v-if="width > 600"/>
-
-    <mobile-nav
-    v-if="width < 600"/>
+    <le-nav />
   </div>
 </template>
 
 <script>
-import desktopNav from './components/nav/desktop.vue'
-import mobileNav from './components/nav/mobile.vue'
+import leNav from './components/nav/nav.vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 export default {
@@ -20,8 +15,7 @@ export default {
     height: document.documentElement.clientHeight
   }),
   components: {
-    desktopNav,
-    mobileNav
+    leNav
   },
   computed: {
 

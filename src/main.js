@@ -4,7 +4,6 @@ import store from './store'
 import mainCss from './styles/main.less'
 import vuetify from './plugins/vuetify'
 
-
 Vue.config.productionTip = false
 
 new Vue({
