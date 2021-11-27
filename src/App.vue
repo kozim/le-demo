@@ -1,11 +1,14 @@
 <template>
   <div id="app">
+    <le-header />
     <le-nav />
   </div>
 </template>
 
 <script>
-import leNav from './components/nav/nav.vue'
+import leHeader from './components/nav/top-header.vue'
+import leNav from './components/nav/nav-menu.vue'
+
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 export default {
@@ -15,6 +18,7 @@ export default {
     height: document.documentElement.clientHeight
   }),
   components: {
+    leHeader,
     leNav
   },
   computed: {

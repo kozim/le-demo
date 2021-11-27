@@ -35,8 +35,21 @@ p.small {
     font: 700 14px/24px 'Public Sans', sans-serif;
 }
 
+.is-mobile {
+    display: none;
+}
+
 @media only screen and (max-width: 600px) {
-    body {
-            background-color: lightblue;
-        }
+    .is-desktop {
+        display: none;
     }
+
+    .is-mobile {
+        display: block
+    }
+
+    body {
+            // background-color: lightblue;
+        }
+        
+}
