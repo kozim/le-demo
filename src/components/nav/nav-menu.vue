@@ -11,10 +11,13 @@
                 <img class="le-logo desktop-nav-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
                 <ul class="menu level-1">
                     <li>
-                        <a href="#" v-on:click="toggleSubMenu($event)" class="nested">SOLUTIONS <i class="right-arrow fa fa-chevron-right"></i></a>
+                        <a href="#" v-on:click="toggleSubMenu($event)" class="nested">
+                            SOLUTIONS <i class="right-arrow fa fa-chevron-right"></i>
+                        </a>
+                        
                         <ul class="sub-menu">
                             <li class="back-arrow">
-                                <a href="#" class="nested" v-on:click="closeSubMenu($event)"><i class="fa fa-chevron-left"></i>GO BACK </a>
+                                <a href="#" class="nested" v-on:click="resetNav($event)"><i class="fa fa-chevron-left"></i>GO BACK </a>
                             </li>
                             <li>
                                 <a href="#" class="nested">SOLUTIONS BY INDUSTRY <i class="right-arrow fa fa-chevron-right"></i> </a>
@@ -43,6 +46,7 @@
                         <a href="#" class="nested">RESOURCES <i class="right-arrow fa fa-chevron-right"></i></a>
                     </li>
                 </ul>
+                <div class="search-icon">Search <i class="fa fa-search"></i></div>
             </div>
         </div>
         <div class="footer-nav">
@@ -78,21 +82,21 @@
             }
         },
         methods: {
-            exitNav() {
+            resetNav() {
                 let activeSubMenu = this.$el.querySelector(`.${this.isSubMenuVisible}`);
-                if(activeSubMenu) {
+                let activeSel = this.$el.querySelector('.is-active');
+                if(activeSubMenu || activeSel) {
                     activeSubMenu.classList.remove(this.isSubMenuVisible);
+                    activeSel.classList.remove('is-active');
                 }
+            },
+            exitNav() {
+                this.resetNav();
                 this.$store.commit("setIsNav", false);
             },
             toggleSubMenu(e) {
+                e.target.classList.toggle('is-active');
                 e.target.nextSibling.classList.toggle(this.isSubMenuVisible);
-            },
-            closeSubMenu(e) {
-                let activeSubMenu = this.$el.querySelector(`.${this.isSubMenuVisible}`);
-                if(activeSubMenu) {
-                    activeSubMenu.classList.remove(this.isSubMenuVisible);
-                }
             }
         }
     }
@@ -134,6 +138,18 @@
         display: none;
     }
 
+    .search-icon {
+        font: 400 16px/24px 'Noto Sans', sans-serif;
+        margin-left: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        i {
+            margin: 0 5px;
+        }
+    }
+
     @media only screen and (min-width: 600px) {
         .list-wrapper {
 
@@ -148,6 +164,9 @@
             padding: 0px 15px;
 
             .menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
 
                 .right-arrow {
                     display: none;
@@ -157,11 +176,26 @@
                     background-color: #fff;
                     list-style-type: none;
                     padding: 15px;
-                    float: left;
+                    
                     
                     > a {
-                        color: #B81830;
-                        border-bottom: 2px solid #B81830;
+                        display: block;
+                        position: relative;
+
+                        &.is-active {
+                            color: @primary;
+
+                            &::after {
+                                // color: #B81830;
+                                // border-bottom: 2px solid #B81830;
+                                content: '';
+                                border-bottom: 3px solid @primary;
+                                width: 100%;
+                                display: block;
+                                position: absolute;
+                                top: 43px;
+                            }
+                        }
                     }
 
                     > .is-sub-menu-visible {
@@ -192,6 +226,10 @@
     }
 
     @media only screen and (max-width: 600px) {
+        .search-icon {
+            display: none;
+        }
+
         nav {
             display: none;
             position: absolute;
