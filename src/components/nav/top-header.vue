@@ -1,7 +1,7 @@
 <template>
   <div class="top-header">
 		<div class="left">
-			<i class="is-mobile fa fa-bars"></i>
+			<i class="is-mobile fa fa-bars" v-on:click="toggleNav"></i>
 			<img class="is-mobile le-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
 		
 			<div class="is-desktop fflag fflag-US ff-mds ff-wave"></div>
@@ -20,7 +20,19 @@
 </template>
 
 <script>
-
+	export default {
+        data: () => ({
+        }),
+        mounted() {
+        },
+        computed: {
+        },
+        methods: {
+            toggleNav() {
+                this.$store.commit("setIsNav", true);
+            }
+        }
+    }
 </script>
 
 <style lang="less">
