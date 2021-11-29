@@ -10,40 +10,18 @@
             <div class="list-wrapper">
                 <img class="le-logo desktop-nav-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
                 <ul class="menu level-1">
-                    <li>
-                        <a href="#" v-on:click="toggleSubMenu($event)" class="nested">
-                            SOLUTIONS <i class="right-arrow fa fa-chevron-right"></i>
+                    <li v-for='( navItem, index ) of navList.menu' :key='index'>
+                        <a :id="navItem.link" href="#" v-on:click="toggleSubMenu($event, index + 1)">
+                            {{ navItem.name}} <i class="right-arrow fa fa-chevron-right"></i>
                         </a>
-                        
                         <ul class="sub-menu">
                             <li class="back-arrow">
-                                <a href="#" class="nested" v-on:click="resetNav($event)"><i class="fa fa-chevron-left"></i>GO BACK </a>
+                                <a href="#" v-on:click="resetNav($event, index)"><i class="fa fa-chevron-left"></i>GO BACK </a>
                             </li>
-                            <li>
-                                <a href="#" class="nested">SOLUTIONS BY INDUSTRY <i class="right-arrow fa fa-chevron-right"></i> </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nested">SOLUTIONS BY PROCESS <i class="right-arrow fa fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="nested">SOFTWARE SOLUTIONS <i class="right-arrow fa fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="nested">SERVICES <i class="right-arrow fa fa-chevron-right"></i></a>
+                            <li v-for='( subItem, index ) of navItem.sub' :key='index'>
+                                <a href="#">{{ subItem.name }} <i class="right-arrow fa fa-chevron-right"></i> </a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nested">PRODUCTS <i class="right-arrow fa fa-chevron-right"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="nested">AUTOMATION <i class="right-arrow fa fa-chevron-right"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="nested">EDUCATION <i class="right-arrow fa fa-chevron-right"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="nested">RESOURCES <i class="right-arrow fa fa-chevron-right"></i></a>
                     </li>
                 </ul>
                 <div class="search-icon">Search <i class="fa fa-search"></i></div>
@@ -70,9 +48,12 @@
 </template>
 
 <script>
+    import navListJson from "../../data/nav-menu.json"
+
     export default {
         data: () => ({
-            isSubMenuVisible: 'is-sub-menu-visible'
+            isSubMenuVisible: 'is-sub-menu-visible',
+            navList: navListJson
         }),
         mounted() {
         },
@@ -82,19 +63,39 @@
             }
         },
         methods: {
-            resetNav() {
+            resetNav(e, index) {
+                let activeSubMenu = this.$el.querySelectorAll(`.${this.isSubMenuVisible}`);
+                let activeSel = this.$el.querySelectorAll('.is-active');
+                
+                
+                if(activeSel.length) {
+                    activeSel.forEach(item => {
+                        if(item.id !== index.toString()) {
+                            item.classList.remove('is-active');   
+
+                            if(activeSubMenu.length) {
+                                activeSubMenu.forEach(item => {
+                                    item.classList.remove(this.isSubMenuVisible);
+                                });
+                            }
+                        }
+                    });  
+                }
+                
+            },
+            exitNav() {
+             
                 let activeSubMenu = this.$el.querySelector(`.${this.isSubMenuVisible}`);
                 let activeSel = this.$el.querySelector('.is-active');
                 if(activeSubMenu || activeSel) {
                     activeSubMenu.classList.remove(this.isSubMenuVisible);
                     activeSel.classList.remove('is-active');
                 }
-            },
-            exitNav() {
-                this.resetNav();
                 this.$store.commit("setIsNav", false);
             },
-            toggleSubMenu(e) {
+            toggleSubMenu(e, index) {
+                console.log(e);
+                this.resetNav(e, index);
                 e.target.classList.toggle('is-active');
                 e.target.nextSibling.classList.toggle(this.isSubMenuVisible);
             }

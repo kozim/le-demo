@@ -1,0 +1,37 @@
+{
+    "menu":[
+        {
+            "name": "Solutions", 
+            "link": "1",
+            "sub": [
+                { "name": "Solutions By Industry", "sub": null },
+                { "name": "Solutions By Process", "sub": null },
+                { "name": "Software Solutions", "sub": null },
+                { "name": "Services", "sub": null }
+            ]
+        },
+        {   "name": "Products",
+            "link": "2",
+            "sub": [
+                { "name": "Solutions By Industry PRODUCT", "sub": null },
+                { "name": "Solutions By Process", "sub": null },
+                { "name": "Software Solutions", "sub": null },
+                { "name": "Services", "sub": null }
+            ]
+        },        
+        {   "name": "Automation",
+            "link": "3",
+            "sub": []
+        },        
+        {
+            "name": "Education", 
+            "link": "4",
+            "sub": []
+        },
+        {
+            "name": "Resources",
+            "link": "5",
+            "sub": []
+        }
+    ]
+}
