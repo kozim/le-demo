@@ -78,6 +78,7 @@
 
             .btns {
                 color: @primary;
+                cursor: pointer;
             }
             
             .thumbnail-img {
