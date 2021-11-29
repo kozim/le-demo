@@ -111,6 +111,7 @@
         -webkit-box-shadow: 0 3px 5px #9d9d9d;
         -moz-box-shadow: 0 3px 5px #9d9d9d;
         box-shadow: 0 3px 5px #9d9d9d;
+        z-index: 99999;
     }
     
     .desktop-nav-logo {
