@@ -11,7 +11,7 @@
                 <img class="le-logo desktop-nav-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
                 <ul class="menu level-1">
                     <li v-for='( navItem, index ) of navList.menu' :key='index'>
-                        <a :id="navItem.link" href="#" v-on:click="toggleSubMenu($event, index + 1)">
+                        <a :id="navItem.link" href="#" v-on:click="toggleSubMenu($event, index)">
                             {{ navItem.name}} <i class="right-arrow fa fa-chevron-right"></i>
                         </a>
                         <ul class="sub-menu">
@@ -63,7 +63,7 @@
             }
         },
         methods: {
-            resetNav(e, index) {
+            toggleNav(e, index) {
                 let activeSubMenu = this.$el.querySelectorAll(`.${this.isSubMenuVisible}`);
                 let activeSel = this.$el.querySelectorAll('.is-active');
                 
@@ -83,21 +83,25 @@
                 }
                 
             },
-            exitNav() {
-             
+            resetNav() {
                 let activeSubMenu = this.$el.querySelector(`.${this.isSubMenuVisible}`);
                 let activeSel = this.$el.querySelector('.is-active');
                 if(activeSubMenu || activeSel) {
                     activeSubMenu.classList.remove(this.isSubMenuVisible);
                     activeSel.classList.remove('is-active');
                 }
+            },
+            exitNav() {
+                this.resetNav();
                 this.$store.commit("setIsNav", false);
             },
             toggleSubMenu(e, index) {
                 console.log(e);
-                this.resetNav(e, index);
-                e.target.classList.toggle('is-active');
-                e.target.nextSibling.classList.toggle(this.isSubMenuVisible);
+                this.toggleNav(e, index);
+                if( this.navList.menu[index].sub.length ) {
+                    e.target.classList.toggle('is-active');
+                    e.target.nextSibling.classList.toggle(this.isSubMenuVisible);
+                }
             }
         }
     }
@@ -187,6 +191,10 @@
                     > a {
                         display: block;
                         position: relative;
+
+                        &:hover{
+                            color: @primary;
+                        }
 
                         &.is-active {
                             color: @primary;
