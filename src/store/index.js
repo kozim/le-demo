@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		isNav: false,
-		logoUrl: '../assets/le-logo.png'
+		logoUrl: '../assets/le-logo.png',
+		cart: 0
 	},
 	getters: {
 		getIsNav(state) {
@@ -14,11 +15,17 @@ export default new Vuex.Store({
 		},
 		logoUrl(state) {
 			return state.logoUrl;
+		},
+		getCart(state) {
+			return state.cart
 		}
 	},
 	mutations: {
 		setIsNav(state, val) {
 			state.isNav = val;
+		},
+		setCart(state, val) {
+			state.cart = val;
 		}
 	},
 	actions: {

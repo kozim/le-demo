@@ -1,50 +1,58 @@
 <template>
-	<div class="product-details">
-		<div class="gallery">
-			gallery here
+	<div class='product-details'>
+		<div class='gallery'>
+			<product-gallery :img-links='product.gallery' />
 		</div>
-		<div class="details">
-			<h1 class="non-banner title">
+		<div class='details'>
+			<h1 class='non-banner title'>
 				{{product.name}}
 			</h1>
-			<h4 class="headline-light"> {{ product.type }} | {{ product.id }} </h4>
-			<div class="rating">
+			<h4 class='headline-light'> {{ product.type }} | {{ product.id }} </h4>
+			<div class='rating'>
 				<span 
-					v-for="( item, index ) of 5" :key="index" 
-					class="fa fa-star star"
-					v-bind:class="{ 'checked' : ( index < product.rating ) }">
+					v-for='( item, index ) of 5' :key='index' 
+					class='fa fa-star star'
+					v-bind:class='{ "checked" : ( index < product.rating ) }'>
 				</span>
-				<p class="small">{{ product.ratingText }} </p>
-				<p class="small">({{ product.ratingTotal }}) </p>
+				<p class='small'>{{ product.ratingText }} </p>
+				<p class='small'>({{ product.ratingTotal }}) </p>
 			</div>
 			<hr>
-			<p class="small">
+			<p class='small'>
 				{{ product.desc }}
 			</p>
-			<span class="rebate">
-				<p class="small">
-					<span class="icon rebate-color fa fa-dollar"></span>
-					<span class="rebate-color text">REBATE  </span> <span class="green">| </span>
+			<span class='rebate'>
+				<p class='small'>
+					<span class='icon rebate-color fa fa-dollar'></span>
+					<span class='rebate-color text'>REBATE  </span> <span class='green'>| </span>
 					{{ product.rebateInfo }}
 				</p>
 			</span>
 
-			<div class="purchase-info">
-				<p class="small msrp">
+			<div class='purchase-info'>
+				<p class='small msrp'>
 					MSRP: ${{ product.msrp }}
 				</p>
-				<p class="small price-text">
+				<p class='small price-text'>
 					Your Price
 				</p>
-				<p class="final-price">
+				<p class='final-price'>
 					${{ product.discountPrice }}
 				</p>
-				<p class="noto-small"><span class="in-stock-color">In Stock</span> | QTY: {{ product.qty }} - {{ product.qtyLocation }}</p>
-				<div class="checkout-buttons">
-					<div class="buy-amount-input">
-						<button>-</button>
-						<p>5</p>
-						<button>+</button>
+				<p class='noto-small'><span class='in-stock-color'>In Stock</span> | QTY: {{ product.qty }} - {{ product.qtyLocation }}</p>
+				<div class='cart-list-row'>
+					<div class='checkout-buttons'>
+						<div class='buy-amount-input'>
+							<button class='btns' v-on:click='removeItem'>-</button>
+							<p class='noto-small'>{{ cartQty }}</p>
+							<button class='btns' v-on:click='addItem'>+</button>
+						</div>
+						<div class='add-cart-btn noto-sans-small-bold' v-on:click='addToCart'>
+							ADD TO CART
+						</div>
+					</div>
+					<div class='add-to-list noto-sans-small-bold'>
+						<span class='fa fa-list-ul'></span> ADD TO LIST
 					</div>
 				</div>
 			</div>
@@ -58,38 +66,56 @@
 </template>
 
 <script>
+	import productGallery from './product-gallery.vue'
+
 	export default {
+		components: {
+			productGallery
+		},
         data: () => ({
 			product: {
-				name: "VIKING 3350",
-				type: "Welding Helmet",
-				id: "K4034-4",
+				name: 'VIKING 3350',
+				type: 'Welding Helmet',
+				id: 'K4034-4',
 				rating: 4,
-				ratingText: "4.0",
+				ratingText: '4.0',
 				ratingTotal: 36,
-				desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temopor, incididunt ut labore et dolore magan aliqua.",
+				desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temopor, incididunt ut labore et dolore magan aliqua.',
 				rebate: true,
-				rebateInfo: "Enter code CASH-50 at checkout for $50 of this item!",
-				msrp: "350.00",
-				discountPrice: "300.00",
+				rebateInfo: 'Enter code CASH-50 at checkout for $50 of this item!',
+				msrp: '350.00',
+				discountPrice: '300.00',
 				qty: 1,
-				qtyLocation: "Los Angeles, CA US"
-			}
+				qtyLocation: 'Los Angeles, CA US',
+				gallery: ['product-photo.png', 'cheater-product.png', 'headgear-product.png', 'lens-product.png', 'product-photo.png' ]
+			},
+			cartQty: 0
         }),
         mounted() {
         },
         computed: {
         },
         methods: {
+			addItem() {
+				this.cartQty++;
+			},
+			removeItem() {
+				if( this.cartQty > 0 ) {
+					this.cartQty--;
+				}
+			},
+			addToCart() {
+				this.$store.commit('setCart', this.cartQty);
+			}
         }
     }
 </script>
 
-<style lang="less">
+<style lang='less'>
 	@import '../../styles/variables.less';
 
 	.product-details {
-		background-color: #fff; // remove me testing
+		background-color: #fff;
 		height: 600px;
 		display: flex;
 		flex-direction: row;
@@ -100,12 +126,21 @@
 		-webkit-box-shadow: inset 0 3px 5px #ccc;
 		-moz-box-shadow: inset 0 3px 5px #ccc;
 		box-shadow: inset 0 3px 5px #ccc;
+		height: 100%;
     
 		.gallery, .details {
-			// border: 1px solid red; // remove me testing
-			padding: 20px;
-			margin: 20px;
-			width: 550px;
+			max-width: 100%;
+			min-width: 50%;
+		}
+
+		.gallery {
+			padding: 40px 0px 40px 40px;
+			margin: 40px 0px 40px 40px;
+		}
+
+		.details{
+			padding: 40px 40px 40px 0px;
+			margin: 40px 40px 40px 0px;
 		}
 
 		.title {
@@ -161,6 +196,7 @@
 		.purchase-info {
 			background-color: @page-section-bgs;
 			padding: 25px;
+			margin-top: 35px;
 
 			.msrp {
 				margin-bottom: 10px;
@@ -180,8 +216,23 @@
 				font-weight: bold;
 			}
 
+
+			.cart-list-row {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				align-content: stretch;
+				flex-wrap: wrap;
+			}
 			.checkout-buttons {
-				margin: 15px 0px;
+				display: flex;
+				flex-direction: row;
+				align-items: stretch;
+				margin: 15px 15px 15px 0px;
+				border: 1px solid #D0D0D0;
+				border-radius: 5px;
+				width: 325px;
 
 				.buy-amount-input{
 					display: flex;
@@ -190,13 +241,29 @@
 					justify-content: space-around;
 					align-items: center;
 					align-content: stretch;
-					width: 135px;
-					border: 1px solid #D0D0D0;
-					padding: 18px 36px;
-					border-radius: 5px;
+					width: 40%;
+					padding: 14px 0px;
 					background-color: #FFF;
 
+					.btns {
+						color: @primary;
+						font-weight: bold;
+					}
+
 				}
+
+				.add-cart-btn {
+					background-color: @primary;
+					color: #fff;
+					padding: 14px 36px;
+					width: 60%;
+					text-align: center;
+					cursor: pointer;
+				}
+			}
+
+			.add-to-list {
+				color: @primary;
 			}
 			
 		}
@@ -206,11 +273,6 @@
 		.product-details {
 			display: flex;
 			flex-direction: column;
-			justify-content: flex-start;
-			align-items: center;
-			align-content: stretch;
-			padding: 10px;
-
 
 			.gallery, .details {
 				padding: 20px;

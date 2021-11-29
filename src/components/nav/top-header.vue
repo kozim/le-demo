@@ -13,7 +13,7 @@
 			<a class="is-desktop" href="#"><i class="fa fa-question-circle"></i></a>
 			<a class="is-desktop" href="#"><i class="fa fa-map-marker"></i></a>
 			<a href="#"><i class="fa fa-user"></i></a>
-			<a class="checkout-icon" href="#"><i class="fa fa-shopping-cart"></i><p class="noto-sans-small-bold">3</p></a>
+			<a class="checkout-icon" href="#"><i class="fa fa-shopping-cart"></i><p class="noto-sans-small-bold">{{cart}}</p></a>
 		</div>
   </div>
 
@@ -26,6 +26,9 @@
         mounted() {
         },
         computed: {
+			cart() {
+                return this.$store.getters["getCart"];
+            }
         },
         methods: {
             toggleNav() {
