@@ -105,6 +105,13 @@
 <style lang="less">
 	@import '../../styles/variables.less';
     @import '../../styles/flags.less';
+
+    .nav-menu {
+        background-color: #FFF;
+        -webkit-box-shadow: 0 3px 5px #9d9d9d;
+        -moz-box-shadow: 0 3px 5px #9d9d9d;
+        box-shadow: 0 3px 5px #9d9d9d;
+    }
     
     .desktop-nav-logo {
         width: 130px;
@@ -157,9 +164,6 @@
             display: flex;
 			flex-direction: row;
             align-items: center;
-            -webkit-box-shadow: 0 3px 5px @borders;
-            -moz-box-shadow: 0 3px 5px @borders;
-            box-shadow: 0 3px 5px @borders;
             height: 68px;
             padding: 0px 15px;
 
@@ -200,14 +204,17 @@
 
                     > .is-sub-menu-visible {
                         position: absolute;
-                        top: 110px;
+                        top: 104px;
                         left: 0;
                         width: 100%;
-                        height: 90vh;
+                        height: 400px;
                         overflow: hidden;
                         background-color: #fff;
                         z-index: 9999;
                         padding: 20px 50px;
+                        -webkit-box-shadow: inset 0 3px 5px #ccc;
+                        -moz-box-shadow: inset 0 3px 5px #ccc;
+                        box-shadow: inset 0 3px 5px #ccc;
 
                         li {
                             list-style-type: none;
