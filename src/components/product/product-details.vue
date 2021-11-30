@@ -67,34 +67,20 @@
 
 <script>
 	import productGallery from './product-gallery.vue'
+	import { mapGetters } from 'vuex'
 
 	export default {
 		components: {
 			productGallery
 		},
         data: () => ({
-			product: {
-				name: 'VIKING 3350',
-				type: 'Welding Helmet',
-				id: 'K4034-4',
-				rating: 4,
-				ratingText: '4.0',
-				ratingTotal: 36,
-				desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temopor, incididunt ut labore et dolore magan aliqua.',
-				rebate: true,
-				rebateInfo: 'Enter code CASH-50 at checkout for $50 of this item!',
-				msrp: '350.00',
-				discountPrice: '300.00',
-				qty: 1,
-				qtyLocation: 'Los Angeles, CA US',
-				gallery: ['product-photo.png', 'cheater-product.png', 'headgear-product.png', 'lens-product.png', 'product-photo.png' ]
-			},
 			cartQty: 0
         }),
-        mounted() {
-        },
-        computed: {
-        },
+		computed: {
+			...mapGetters({
+				product: 'getVikingProduct'
+			})
+		},
         methods: {
 			addItem() {
 				this.cartQty++;
@@ -116,16 +102,12 @@
 
 	.product-details {
 		background-color: #fff;
-		height: 600px;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
 		justify-content: center;
 		align-items: baseline;
 		align-content: stretch;
-		-webkit-box-shadow: inset 0 3px 5px #ccc;
-		-moz-box-shadow: inset 0 3px 5px #ccc;
-		box-shadow: inset 0 3px 5px #ccc;
 		height: 100%;
     
 		.gallery, .details {
@@ -134,13 +116,13 @@
 		}
 
 		.gallery {
-			padding: 40px 0px 40px 40px;
-			margin: 40px 0px 40px 40px;
+			padding: 20px 0px 60px 60px;
+			margin: 20px 0px 60px 60px;
 		}
 
 		.details{
-			padding: 40px 40px 40px 0px;
-			margin: 40px 40px 40px 0px;
+			padding: 20px 60px 60px 0px;
+			margin: 20px 60px 60px 0px;
 		}
 
 		.title {

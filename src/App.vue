@@ -2,7 +2,11 @@
   <div id="app">
     <le-header />
     <le-nav />
+    <le-breadcrumbs />
     <le-product />
+    <footer>
+
+    </footer>
   </div>
 </template>
 
@@ -10,6 +14,7 @@
 import leHeader from './components/nav/top-header.vue'
 import leNav from './components/nav/nav-menu.vue'
 import leProduct from './components/product/product-details.vue'
+import leBreadcrumbs from './components/breadcrumbs.vue'
 
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
@@ -22,7 +27,8 @@ export default {
   components: {
     leHeader,
     leNav,
-    leProduct
+    leProduct,
+    leBreadcrumbs
   },
   computed: {
 
@@ -43,10 +49,16 @@ export default {
 }
 </script>
 
-<style lang="less">
-  // @import './styles/variables.less';
-  
+<style lang='less'>  
   #app {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
 
+    footer {
+      background-color: #1E1E1E;
+      height: 200px;
+    }
   }
 </style>

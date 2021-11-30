@@ -48,7 +48,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang='less'>
 	@import '../../styles/variables.less';
     @import '../../styles/flags.less';
 
@@ -57,7 +57,6 @@
         display: flex;
         flex-direction: row;
         align-content: stretch;
-
 
         .main-image {
             width: 100%;

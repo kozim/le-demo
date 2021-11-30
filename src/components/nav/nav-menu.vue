@@ -10,7 +10,7 @@
             <div class="list-wrapper">
                 <img class="le-logo desktop-nav-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
                 <ul class="menu level-1">
-                    <li v-for='( navItem, index ) of navList.menu' :key='index'>
+                    <li v-for='( navItem, index ) of navList' :key='index'>
                         <a :id="navItem.link" href="#" v-on:click="toggleSubMenu($event, index)">
                             {{ navItem.name}} <i class="right-arrow fa fa-chevron-right"></i>
                         </a>
@@ -48,19 +48,19 @@
 </template>
 
 <script>
-    import navListJson from "../../data/nav-menu.json"
-
+    import { mapGetters } from 'vuex'
+    
     export default {
         data: () => ({
-            isSubMenuVisible: 'is-sub-menu-visible',
-            navList: navListJson
+            isSubMenuVisible: 'is-sub-menu-visible'
         }),
         mounted() {
         },
         computed: {
-            isNav() {
-                return this.$store.getters["getIsNav"];
-            }
+            ...mapGetters({
+				navList: 'getNavList',
+                isNav: 'getIsNav'
+			})
         },
         methods: {
             toggleNav(e, index) {
@@ -96,7 +96,7 @@
             toggleSubMenu(e, index) {
                 console.log(e);
                 this.toggleNav(e, index);
-                if( this.navList.menu[index].sub.length ) {
+                if( this.navList[index].sub.length ) {
                     e.target.classList.toggle('is-active');
                     e.target.nextSibling.classList.toggle(this.isSubMenuVisible);
                 }
@@ -105,7 +105,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang='less'>
 	@import '../../styles/variables.less';
     @import '../../styles/flags.less';
 
@@ -115,6 +115,8 @@
         -moz-box-shadow: 0 3px 5px #9d9d9d;
         box-shadow: 0 3px 5px #9d9d9d;
         z-index: 99999;
+        position: absolute;
+        width: 100%;
     }
     
     .desktop-nav-logo {
@@ -212,7 +214,7 @@
 
                     > .is-sub-menu-visible {
                         position: absolute;
-                        top: 104px;
+                        top: 80px;
                         left: 0;
                         width: 100%;
                         height: 100vh;
@@ -220,9 +222,6 @@
                         background-color: #fff;
                         z-index: 9999;
                         padding: 20px 50px;
-                        -webkit-box-shadow: inset 0 3px 5px #ccc;
-                        -moz-box-shadow: inset 0 3px 5px #ccc;
-                        box-shadow: inset 0 3px 5px #ccc;
 
                         li {
                             list-style-type: none;

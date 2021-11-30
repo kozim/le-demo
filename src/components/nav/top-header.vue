@@ -20,15 +20,17 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
+
 	export default {
         data: () => ({
         }),
         mounted() {
         },
         computed: {
-			cart() {
-                return this.$store.getters["getCart"];
-            }
+			...mapGetters({
+				cart: 'getCart'
+			})
         },
         methods: {
             toggleNav() {
@@ -38,7 +40,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang='less'>
 	@import '../../styles/variables.less';
 	@import '../../styles/flags.less';
 
@@ -72,11 +74,6 @@
 			justify-content: space-between;
 			align-items: center;
 
-			// display: flex;
-			// flex-direction: row;
-			// align-items: stretch;
-			// align-content: stretch;
-
 			a {
 				padding: 0 10px;
 				color: #fff;
@@ -104,54 +101,51 @@
 	
 
 	@media only screen and (max-width: 600px) {
+		.navigation-menu {
+			height:100%;
+			width:100%;
+			overflow:hidden;
+		}
+
+		.top-header {
+			background-color: #fff;
+			color: #000;
+			height: 49px;
 			
-			.navigation-menu {
-				height:100%;
-				width:100%;
-				overflow:hidden;
+			.left {
+				padding-left: 10px;
+
+				.fflag {
+					margin-right: 5px;
+				}
 			}
 
-			.top-header {
-				background-color: #fff;
-				color: #000;
-				height: 49px;
-				
-				.left {
-					padding-left: 10px;
+			.icon-bar {
 
-					.fflag {
-						margin-right: 5px;
+				a {
+					color: #000;
+					padding: 0 5px;
+
+					.fa, .fa-bars {
+						font-size: 18px;
 					}
-				}
 
-				.icon-bar {
-
-					a {
+					&.checkout-icon {
+						padding: 5px 10px 5px 5px;
+						text-decoration: none;
+						background-color: #fff;
 						color: #000;
-						padding: 0 5px;
 
-						.fa, .fa-bars {
-							font-size: 18px;
-						}
-
-						&.checkout-icon {
-							padding: 5px 10px 5px 5px;
-							text-decoration: none;
-							background-color: #fff;
-							color: #000;
-
-							i {
-								margin-right: 5px;
-							}		
-							
-							p {
-								display: inline-block;
-							}
+						i {
+							margin-right: 5px;
+						}		
+						
+						p {
+							display: inline-block;
 						}
 					}
-
-
 				}
 			}
 		}
+	}
 </style>

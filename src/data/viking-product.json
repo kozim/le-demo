@@ -1,0 +1,18 @@
+{
+    "product": {
+        "name": "VIKING 3350",
+        "type": "Welding Helmet",
+        "id": "K4034-4",
+        "rating": 4,
+        "ratingText": "4.0",
+        "ratingTotal": 36,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temopor, incididunt ut labore et dolore magan aliqua.",
+        "rebate": true,
+        "rebateInfo": "Enter code CASH-50 at checkout for $50 of this item!",
+        "msrp": "350.00",
+        "discountPrice": "300.00",
+        "qty": 1,
+        "qtyLocation": "Los Angeles, CA US",
+        "gallery": ["product-photo.png", "cheater-product.png", "headgear-product.png", "lens-product.png", "product-photo.png" ]
+    }
+}
