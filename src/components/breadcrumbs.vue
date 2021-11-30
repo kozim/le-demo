@@ -1,6 +1,6 @@
 <template>
 	<div class='bread-crumbs'>
-		<span class='noto-small bread-crumb' v-for='( breadCrumb, index ) of breadCrumbs' :key='index'> <a href='#'>{{breadCrumb}} <i class='fa fa-chevron-right btns'></i></a></span>
+		<span class='bread-crumb' v-for='( breadCrumb, index ) of breadCrumbs' :key='index'> <a href='#'>{{breadCrumb}} <i class='fa fa-chevron-right btns'></i></a></span>
 	</div>
 
 </template>
@@ -29,10 +29,12 @@
 	.bread-crumbs {
 		background-color: #fff;
 		margin-top: 70px;
-		padding: 20px 0px 0px 60px;
+		padding: 20px 0px 0px 100px;
 
 		.bread-crumb {
 			margin: 0px 5px;
+			font: 400 12px/24px 'Noto Sans', sans-serif;
+    		color: @lightest-text;
 
 			a {
 				text-decoration: none;
@@ -63,6 +65,7 @@
 			padding: 20px 0px 0px 20px;
 
 			.bread-crumb {
+
 				&:not(:nth-last-child(2)) {
 					display: none;
 				}

@@ -52,7 +52,7 @@ export default {
 <style lang='less'>  
   #app {
     position: relative;
-    max-width: 1400px;
+    max-width: 1450px;
     margin: 0 auto;
     height: 100%;
 

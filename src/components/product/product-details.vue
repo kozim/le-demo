@@ -109,6 +109,7 @@
 		align-items: baseline;
 		align-content: stretch;
 		height: 100%;
+		padding: 0px 50px;
     
 		.gallery, .details {
 			max-width: 100%;
@@ -255,6 +256,7 @@
 		.product-details {
 			display: flex;
 			flex-direction: column;
+			padding: 0px;
 
 			.gallery, .details {
 				padding: 20px;

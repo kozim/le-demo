@@ -12,7 +12,7 @@ export default new Vuex.Store({
 		cart: 0,
 		vikingProduct: vikingJson.product,
 		navList: navListJson.menu,
-		breadCrumbs: ["Home", "Equipment", "Safety", "Helmets & Shields", "Helmets", "Viking 3350" ]
+		breadCrumbs: ["Home", "Equipment", "Safety", "Helmets & Shields", "Helmets", "VIKING 3350" ]
 	},
 	getters: {
 		getIsNav(state) {

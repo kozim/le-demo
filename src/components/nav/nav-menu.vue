@@ -90,9 +90,9 @@
 
     .nav-menu {
         background-color: #FFF;
-        -webkit-box-shadow: 0 3px 5px #9d9d9d;
-        -moz-box-shadow: 0 3px 5px #9d9d9d;
-        box-shadow: 0 3px 5px #9d9d9d;
+        -webkit-box-shadow: 0 3px 5px #d7d7d7;
+        -moz-box-shadow: 0 3px 5px #d7d7d7;
+        box-shadow: 0 3px 5px #d7d7d7;
         z-index: 99999;
         position: absolute;
         width: 100%;
