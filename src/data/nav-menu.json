@@ -15,10 +15,10 @@
             "link": "1",
             "active": false,
             "sub": [
-                { "name": "Solutions By Industry PRODUCT", "sub": null },
-                { "name": "Solutions By Process PRODUCT", "sub": null },
-                { "name": "Software Solutions PRODUCT", "sub": null },
-                { "name": "Services PRODUCT", "sub": null }
+                { "name": "Products By Industry", "sub": null },
+                { "name": "Products By Process", "sub": null },
+                { "name": "Software Products", "sub": null },
+                { "name": "Products", "sub": null }
             ]
         },        
         {   "name": "Automation",

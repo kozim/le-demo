@@ -11,7 +11,7 @@
                 <img class='le-logo desktop-nav-logo' src='../../assets/le-logo.png' alt='Lincoln Electric'>
                 <ul class='menu level-1'>
                     <li v-for='( navItem, index ) of navList' :key='index'>
-                        <a :id='navItem.link' href='#' v-on:click='toggleSubMenu(navItem, index)' v-bind:class="{ 'is-active': navItem.active }">
+                        <a :id='navItem.link' href='#' v-on:click='toggleSubMenu(navItem, index)' v-bind:class="{ 'is-active': ( navItem.active && navItem.sub.length ) }">
                             {{ navItem.name}} <i class='right-arrow fa fa-chevron-right'></i>
                         </a>
                         <ul class='sub-menu' v-bind:class="{ 'is-sub-menu-visible': ( navItem.active && navItem.sub.length )}">
@@ -170,6 +170,7 @@
                     > a {
                         display: block;
                         position: relative;
+                        text-transform: uppercase;
 
                         &:hover{
                             color: @primary;
