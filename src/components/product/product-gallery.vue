@@ -22,7 +22,6 @@
         props: ['imgLinks'],
         data: () => ({
             selImgIndex: 0
-            // selImgUrl: null
         }),
         mounted() {
         },
@@ -86,9 +85,13 @@
                 border: 1px solid @borders;
                 margin: 10px 0px;
                 padding: 5px 0px 0px 0px;
+                
+                &:hover {
+                    border: 1px solid #7B7B7B;
+                }
 
                 &.active {
-                    border-bottom: 2px solid red;
+                    border-bottom: 2px solid @primary;
                 }
 
                 img {
@@ -101,7 +104,7 @@
     @media only screen and (max-width: 600px) {
         .product-gallery {
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             align-content: center;
 
 
@@ -109,7 +112,7 @@
                 width: 100%;
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-start;
+                justify-content: center;
                 align-items: center;
                 align-content: stretch;
 

@@ -67,7 +67,6 @@
                 let activeSubMenu = this.$el.querySelectorAll(`.${this.isSubMenuVisible}`);
                 let activeSel = this.$el.querySelectorAll('.is-active');
                 
-                
                 if(activeSel.length) {
                     activeSel.forEach(item => {
                         if(item.id !== index.toString()) {
@@ -81,7 +80,6 @@
                         }
                     });  
                 }
-                
             },
             resetNav() {
                 let activeSubMenu = this.$el.querySelector(`.${this.isSubMenuVisible}`);
@@ -339,9 +337,6 @@
 
                     .icon {
                         margin-right: 5px;
-                        
-                        &.fa {
-                        }
                     }
                 }
             
