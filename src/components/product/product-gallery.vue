@@ -55,7 +55,7 @@
         align-content: stretch;
 
         .main-image {
-            width: 100%;
+            width: 90%;
             
             img {
                 width: 100%;
@@ -73,6 +73,7 @@
                 justify-content: flex-start;
                 align-items: center;
                 align-content: stretch;
+                padding-top: 20px;
 
                 .btns {
                     color: @primary;

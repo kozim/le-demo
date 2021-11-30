@@ -104,27 +104,18 @@
 		background-color: #fff;
 		display: flex;
 		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: baseline;
 		align-content: stretch;
 		height: 100%;
-		padding: 0px 50px;
-    
-		.gallery, .details {
-			max-width: 100%;
-			min-width: 50%;
-			padding: 20px 0px;
-		}
+		padding: 30px 0px 50px 0px;
 
 		.gallery {
-			// padding: 20px 0px 60px 60px;
-			// margin: 20px 0px 60px 60px;
+			max-width: 700px;
+			min-width: 500px;
 		}
 
 		.details{
-			// padding: 20px 60px 60px 0px;
-			// margin: 20px 60px 60px 0px;
+			padding: 20px 15px;
+			
 		}
 
 		.title {
@@ -139,6 +130,7 @@
 			p {
 				color: @primary;
 				margin: 0px 5px;
+				font: 400 14px/24px 'Noto Sans', sans-serif;
 			}
 
 			.star {
@@ -153,7 +145,7 @@
 		.rebate {
 			display: flex;
 			flex-direction: row;
-			margin: 20px 0;
+			margin: 15px 0 30px 0;
 
 			.icon {
 				margin-right: 5px;

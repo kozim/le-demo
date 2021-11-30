@@ -64,11 +64,11 @@ export default {
 
 		@media only screen and (min-width: @breakpoint) {
 			.header {
-				margin-bottom: 70px;
+				margin-bottom: 90px;
 			}
 
 			.page {
-				padding: 0px 60px;
+				padding: 0px 120px;
 			}
 		}
 
