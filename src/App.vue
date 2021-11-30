@@ -1,13 +1,16 @@
 <template>
-  <div id="app">
-    <le-header />
-    <le-nav />
-    <le-breadcrumbs />
-    <le-product />
-    <footer>
-
-    </footer>
-  </div>
+	<div id="app">
+	<div class="header">
+		<le-header />
+		<le-nav />
+	</div>
+	<div class="page">
+		<le-breadcrumbs />
+		<le-product />
+	</div>
+	<footer>
+	</footer>
+	</div>
 </template>
 
 <script>
@@ -55,6 +58,17 @@ export default {
     max-width: 1450px;
     margin: 0 auto;
     height: 100%;
+	background-color: #fff;
+
+	@media only screen and (min-width: 600px) {
+		.header {
+			margin-bottom: 70px;
+		}
+
+		.page {
+			padding: 0px 60px;
+		}
+	}
 
     footer {
       background-color: #1E1E1E;

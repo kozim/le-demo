@@ -28,8 +28,7 @@
 
 	.bread-crumbs {
 		background-color: #fff;
-		margin-top: 70px;
-		padding: 20px 0px 0px 100px;
+		padding: 20px 0px 0px 50px;
 
 		.bread-crumb {
 			margin: 0px 5px;

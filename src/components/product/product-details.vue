@@ -114,16 +114,17 @@
 		.gallery, .details {
 			max-width: 100%;
 			min-width: 50%;
+			padding: 20px 0px;
 		}
 
 		.gallery {
-			padding: 20px 0px 60px 60px;
-			margin: 20px 0px 60px 60px;
+			// padding: 20px 0px 60px 60px;
+			// margin: 20px 0px 60px 60px;
 		}
 
 		.details{
-			padding: 20px 60px 60px 0px;
-			margin: 20px 60px 60px 0px;
+			// padding: 20px 60px 60px 0px;
+			// margin: 20px 60px 60px 0px;
 		}
 
 		.title {
