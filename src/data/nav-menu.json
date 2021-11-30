@@ -1,7 +1,8 @@
 {
     "menu":[
         {
-            "name": "Solutions", 
+            "name": "Solutions",
+            "active": false,
             "link": "0",
             "sub": [
                 { "name": "Solutions By Industry", "sub": null },
@@ -12,6 +13,7 @@
         },
         {   "name": "Products",
             "link": "1",
+            "active": false,
             "sub": [
                 { "name": "Solutions By Industry PRODUCT", "sub": null },
                 { "name": "Solutions By Process PRODUCT", "sub": null },
@@ -21,16 +23,19 @@
         },        
         {   "name": "Automation",
             "link": "2",
+            "active": false,
             "sub": []
         },        
         {
             "name": "Education", 
             "link": "3",
+            "active": false,
             "sub": []
         },
         {
             "name": "Resources",
             "link": "4",
+            "active": false,
             "sub": []
         }
     ]

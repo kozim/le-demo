@@ -1,6 +1,6 @@
 <template>
-	<div class="bread-crumbs">
-		<span class='noto-small bread-crumb' v-for='( breadCrumb, index ) of breadCrumbs' :key='index'>{{breadCrumb}} <i class='fa fa-chevron-right btns'></i></span>
+	<div class='bread-crumbs'>
+		<span class='noto-small bread-crumb' v-for='( breadCrumb, index ) of breadCrumbs' :key='index'> <a href='#'>{{breadCrumb}} <i class='fa fa-chevron-right btns'></i></a></span>
 	</div>
 
 </template>
@@ -33,6 +33,11 @@
 
 		.bread-crumb {
 			margin: 0px 5px;
+
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
 		}
 	}
 

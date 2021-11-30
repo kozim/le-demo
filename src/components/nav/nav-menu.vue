@@ -1,46 +1,46 @@
 <template>
-    <nav ref="navMenu" class="nav-menu" v-bind:class="{ 'is-nav-visible': isNav }">
-        <div class="header-bar">
-            <button class="toggle-menu" type="button">
-                <p class="noto-sans-small-bold">Menu</p>
+    <nav ref='navMenu' class='nav-menu' v-bind:class='{ "is-nav-visible": isNav }'>
+        <div class='header-bar'>
+            <button class='toggle-menu' type='button'>
+                <p class='noto-sans-small-bold'>Menu</p>
             </button>
-            <a href="#" v-on:click="exitNav"><i class="fa fa-times"></i></a>
+            <a href='#' v-on:click='exitNav'><i class='fa fa-times'></i></a>
         </div>
-        <div class="menu-wrapper">
-            <div class="list-wrapper">
-                <img class="le-logo desktop-nav-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
-                <ul class="menu level-1">
+        <div class='menu-wrapper'>
+            <div class='list-wrapper'>
+                <img class='le-logo desktop-nav-logo' src='../../assets/le-logo.png' alt='Lincoln Electric'>
+                <ul class='menu level-1'>
                     <li v-for='( navItem, index ) of navList' :key='index'>
-                        <a :id="navItem.link" href="#" v-on:click="toggleSubMenu($event, index)">
-                            {{ navItem.name}} <i class="right-arrow fa fa-chevron-right"></i>
+                        <a :id='navItem.link' href='#' v-on:click='toggleSubMenu(navItem, index)' v-bind:class="{ 'is-active': navItem.active }">
+                            {{ navItem.name}} <i class='right-arrow fa fa-chevron-right'></i>
                         </a>
-                        <ul class="sub-menu">
-                            <li class="back-arrow">
-                                <a href="#" v-on:click="resetNav($event, index)"><i class="fa fa-chevron-left"></i>GO BACK </a>
+                        <ul class='sub-menu' v-bind:class="{ 'is-sub-menu-visible': ( navItem.active && navItem.sub.length )}">
+                            <li class='back-arrow'>
+                                <a href='#' v-on:click='resetNav(index, $event)'><i class='fa fa-chevron-left'></i>GO BACK </a>
                             </li>
                             <li v-for='( subItem, index ) of navItem.sub' :key='index'>
-                                <a href="#">{{ subItem.name }} <i class="right-arrow fa fa-chevron-right"></i> </a>
+                                <a href='#'>{{ subItem.name }} <i class='right-arrow fa fa-chevron-right'></i> </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <div class="search-icon">Search <i class="fa fa-search"></i></div>
+                <div class='search-icon'>Search <i class='fa fa-search'></i></div>
             </div>
         </div>
-        <div class="footer-nav">
+        <div class='footer-nav'>
             <ul>
                 <li>
-                    <i class="icon fa fa-question-circle"></i> Help <i class="fa fa-chevron-right"></i>
+                    <i class='icon fa fa-question-circle'></i> Help <i class='fa fa-chevron-right'></i>
                 </li>
                 <li>
-                    <i class="icon fa fa-map-marker"></i> Where to Buy/Rent
+                    <i class='icon fa fa-map-marker'></i> Where to Buy/Rent
                 </li>
                 <li>
-                    <i class="icon fa fa-shield"></i> Safety
+                    <i class='icon fa fa-shield'></i> Safety
                 </li>
                 <li>
-                    <div class="icon fflag fflag-US ff-mds ff-wave"></div>
-			        <p class="noto-sans-small-bold">EN</p>
+                    <div class='icon fflag fflag-US ff-mds ff-wave'></div>
+			        <p class='noto-sans-small-bold'>EN</p>
                 </li>
             </ul>
         </div>
@@ -63,43 +63,22 @@
 			})
         },
         methods: {
-            toggleNav(e, index) {
-                let activeSubMenu = this.$el.querySelectorAll(`.${this.isSubMenuVisible}`);
-                let activeSel = this.$el.querySelectorAll('.is-active');
-                
-                if(activeSel.length) {
-                    activeSel.forEach(item => {
-                        if(item.id !== index.toString()) {
-                            item.classList.remove('is-active');   
-
-                            if(activeSubMenu.length) {
-                                activeSubMenu.forEach(item => {
-                                    item.classList.remove(this.isSubMenuVisible);
-                                });
-                            }
-                        }
-                    });  
-                }
-            },
             resetNav() {
-                let activeSubMenu = this.$el.querySelector(`.${this.isSubMenuVisible}`);
-                let activeSel = this.$el.querySelector('.is-active');
-                if(activeSubMenu || activeSel) {
-                    activeSubMenu.classList.remove(this.isSubMenuVisible);
-                    activeSel.classList.remove('is-active');
-                }
+                this.navList.forEach(function(item) {
+                        item.active = false;
+                })
             },
             exitNav() {
                 this.resetNav();
-                this.$store.commit("setIsNav", false);
+                this.$store.commit('setIsNav', false);
             },
-            toggleSubMenu(e, index) {
-                console.log(e);
-                this.toggleNav(e, index);
-                if( this.navList[index].sub.length ) {
-                    e.target.classList.toggle('is-active');
-                    e.target.nextSibling.classList.toggle(this.isSubMenuVisible);
-                }
+            toggleSubMenu(item, index) {
+                this.navList.forEach(function(item) {
+                    if(item.link !== index.toString()) {
+                        item.active = false;
+                    }
+                })
+                item.active = !item.active;
             }
         }
     }

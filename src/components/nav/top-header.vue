@@ -1,19 +1,19 @@
 <template>
-  <div class="top-header">
-		<div class="left">
-			<i class="is-mobile fa fa-bars" v-on:click="toggleNav"></i>
-			<img class="is-mobile le-logo" src="../../assets/le-logo.png" alt="Lincoln Electric">
+  <div class='top-header'>
+		<div class='left'>
+			<i class='is-mobile fa fa-bars' v-on:click='toggleNav'></i>
+			<img class='is-mobile le-logo' src='../../assets/le-logo.png' alt='Lincoln Electric'>
 		
-			<div class="is-desktop fflag fflag-US ff-mds ff-wave"></div>
-			<p class="is-desktop noto-sans-small-bold">EN</p>
+			<div class='is-desktop fflag fflag-US ff-mds ff-wave'></div>
+			<p class='is-desktop noto-sans-small-bold'>EN</p>
 		</div>
-		<div class="icon-bar">
-			<a class="is-mobile" href="#"><i class="fa fa-search"></i></a>
-			<a class="is-desktop" href="#"><i class="fa fa-shield"></i></a>
-			<a class="is-desktop" href="#"><i class="fa fa-question-circle"></i></a>
-			<a class="is-desktop" href="#"><i class="fa fa-map-marker"></i></a>
-			<a href="#"><i class="fa fa-user"></i></a>
-			<a class="checkout-icon" href="#"><i class="fa fa-shopping-cart"></i><p class="noto-sans-small-bold">{{cart}}</p></a>
+		<div class='icon-bar'>
+			<a class='is-mobile' href='#'><i class='fa fa-search'></i></a>
+			<a class='is-desktop' href='#'><i class='fa fa-shield'></i></a>
+			<a class='is-desktop' href='#'><i class='fa fa-question-circle'></i></a>
+			<a class='is-desktop' href='#'><i class='fa fa-map-marker'></i></a>
+			<a href='#'><i class='fa fa-user'></i></a>
+			<a class='checkout-icon' href='#'><i class='fa fa-shopping-cart'></i><p class='noto-sans-small-bold'>{{cart}}</p></a>
 		</div>
   </div>
 
@@ -23,10 +23,6 @@
 	import { mapGetters } from 'vuex'
 
 	export default {
-        data: () => ({
-        }),
-        mounted() {
-        },
         computed: {
 			...mapGetters({
 				cart: 'getCart'
@@ -34,7 +30,7 @@
         },
         methods: {
             toggleNav() {
-                this.$store.commit("setIsNav", true);
+                this.$store.commit('setIsNav', true);
             }
         }
     }
