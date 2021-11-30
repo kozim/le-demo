@@ -52,27 +52,29 @@ export default {
 }
 </script>
 
-<style lang='less'>  
-  #app {
-    position: relative;
-    max-width: 1450px;
-    margin: 0 auto;
-    height: 100%;
-	background-color: #fff;
+<style lang='less'>
+	@import './styles/variables.less';
 
-	@media only screen and (min-width: 600px) {
-		.header {
-			margin-bottom: 70px;
+	#app {
+		position: relative;
+		max-width: 1450px;
+		margin: 0 auto;
+		height: 100%;
+		background-color: #fff;
+
+		@media only screen and (min-width: @breakpoint) {
+			.header {
+				margin-bottom: 70px;
+			}
+
+			.page {
+				padding: 0px 60px;
+			}
 		}
 
-		.page {
-			padding: 0px 60px;
+		footer {
+			background-color: #1E1E1E;
+			height: 200px;
 		}
 	}
-
-    footer {
-      background-color: #1E1E1E;
-      height: 200px;
-    }
-  }
 </style>

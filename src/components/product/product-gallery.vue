@@ -63,7 +63,7 @@
         }
     }
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: @breakpoint) {
 
         .product-gallery {
             .thumbnails{
@@ -103,7 +103,7 @@
 
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: @breakpoint) {
         .product-gallery {
             display: flex;
             flex-direction: column-reverse;

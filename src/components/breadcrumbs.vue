@@ -42,7 +42,7 @@
 		}
 	}
 
-	@media only screen and (min-width: 600px) {
+	@media only screen and (min-width: @breakpoint) {
 		.bread-crumbs {
 			.bread-crumb {
 				&:last-child {
@@ -57,7 +57,7 @@
 		}
 	}
 
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: @breakpoint) {
 		.bread-crumbs {
 			background-color: #fff;
 			margin-top: 0px;

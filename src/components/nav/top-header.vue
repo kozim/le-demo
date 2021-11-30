@@ -96,7 +96,7 @@
 	}
 	
 
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: @breakpoint) {
 		.navigation-menu {
 			height:100%;
 			width:100%;

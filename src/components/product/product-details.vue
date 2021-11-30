@@ -253,7 +253,7 @@
 		}
 	}
 
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: @breakpoint) {
 		.product-details {
 			display: flex;
 			flex-direction: column;

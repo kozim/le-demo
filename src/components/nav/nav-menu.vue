@@ -142,7 +142,7 @@
         }
     }
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: @breakpoint) {
         .list-wrapper {
 
             width: 100%;
@@ -219,7 +219,7 @@
         }
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: @breakpoint) {
         .search-icon {
             display: none;
         }
