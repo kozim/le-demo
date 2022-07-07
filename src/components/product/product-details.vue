@@ -110,7 +110,6 @@
 
 		.gallery {
 			max-width: 700px;
-			min-width: 500px;
 		}
 
 		.details{
